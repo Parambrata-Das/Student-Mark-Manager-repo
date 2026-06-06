@@ -34,31 +34,15 @@ struct student
 
 ---
 
-## 📋 How to Run
+## 💻 How to Run This Project Locally
 
-### Prerequisites
-Ensure you have a standard C compiler installed (such as `gcc` via MinGW on Windows, or native packages on Linux/macOS).
-
-### Compilation
-Open your terminal or command prompt in the folder containing your source file and run:
-```bash
-gcc main.c -o student_system
-```
-
-### Execution
-Run the compiled binary:
-
-**Windows:**
-```cmd
-student_system.exe
-```
-
-**Linux / macOS:**
-```bash
-./student_system
-```
-
----
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Parambrata-Das/Student-Mark-Manager-repo.git
+   ```
+2. Navigate into the project folder.
+3. Put the `Terminal C file` files to a single folder.
+4. Then run the folder in `VS code` or any other compailars.
 
 ## 🎮 Usage Guide
 
