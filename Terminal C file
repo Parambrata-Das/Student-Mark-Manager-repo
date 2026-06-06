@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct student 
+{
+    int roll;
+	char Name[100];
+	float marks[100];
+	float total;
+};
+int enty_data(struct student s[], int *n,int *m)
+{
+	int i,j;
+	printf("Enter the number of student: ");
+	scanf("%d", n);
+	printf("Enter the number of subjects: ");
+	scanf("%d", m);
+	for(i=0;i<*n;i++)
+	{
+		s[i].total=0;
+		printf("Student name: ");
+		scanf(" %[^\n]",&s[i].Name);
+		printf("Student Roll no.: ");
+		scanf("%d",&s[i].roll);
+		for(j=0;j<*m;j++)
+		{
+	    	printf("Subject %d marks: ",j+1);
+		    scanf("%f",&s[i].marks[j]);
+	    	s[i].total+=s[i].marks[j];
+		}
+	}
+	printf("\n======Data Entered Succeesfully======\n");
+	return 0;
+}
+int display_data(struct student s[], int n)
+{
+	int i;
+	printf("\n------Student Report Card------\n");
+	 printf("%-10s %-20s %-10s\n", "Roll", "Name", "Total");
+    for(i = 0; i < n; i++)
+    {
+        printf("%-10d %-20s %-10.2f\n", s[i].roll, s[i].Name, s[i].total);
+    }
+	return 0;
+}
+int main()
+{
+	struct student s[100];
+	int student_count=0;
+	int subject_count=0;
+	int ch;
+    do {
+        printf("\n1.Insert \n2.Display \n3.Exit \n");
+        printf("Enter your choice: ");
+        scanf("%d",&ch);
+        switch(ch) {
+        case 1:
+            enty_data(s,&student_count,&subject_count);
+            break;
+        case 2:
+            display_data(s,student_count);
+            break;
+        case 3:
+            exit(0);
+            break;
+        default:
+            printf("Invalid choice");
+        }
+    } while(1);
+}
