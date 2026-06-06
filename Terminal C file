@@ -6,19 +6,33 @@ struct student
 	char Name[100];
 	float marks[100];
 	float total;
+	//int total_marks=500;
+	//char grade[100];
 };
 int enty_data(struct student s[], int *n,int *m)
 {
-	int i,j;
-	printf("Enter the number of student: ");
-	scanf("%d", n);
-	printf("Enter the number of subjects: ");
-	scanf("%d", m);
-	for(i=0;i<*n;i++)
+	int i,j,new_students;
+	if(*n>0)
+	{
+		printf("Enter the number of new students: ");
+		scanf("%d",&new_students);
+	}
+	else
+	{
+		printf("Enter the number of student: ");
+	    scanf("%d",&new_students);
+	}
+	if(*m==0)
+	{
+	    printf("Enter the number of subjects: ");
+	    scanf("%d", m);
+    }
+    int limit=*n+new_students;
+	for(i=*n;i<limit;i++)
 	{
 		s[i].total=0;
-		printf("Student name: ");
-		scanf(" %[^\n]",&s[i].Name);
+		printf("\nStudent name: ");
+		scanf(" %[^\n]",s[i].Name);
 		printf("Student Roll no.: ");
 		scanf("%d",&s[i].roll);
 		for(j=0;j<*m;j++)
@@ -28,6 +42,7 @@ int enty_data(struct student s[], int *n,int *m)
 	    	s[i].total+=s[i].marks[j];
 		}
 	}
+	*n=limit;
 	printf("\n======Data Entered Succeesfully======\n");
 	return 0;
 }
@@ -54,8 +69,15 @@ int main()
         scanf("%d",&ch);
         switch(ch) {
         case 1:
-            enty_data(s,&student_count,&subject_count);
-            break;
+        	if(student_count>100)
+        	{
+        		printf("Database full can't store more elements");
+			}
+			else
+			{
+                enty_data(s,&student_count,&subject_count);
+            }
+			break;
         case 2:
             display_data(s,student_count);
             break;
