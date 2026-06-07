@@ -44,7 +44,7 @@ struct student
    git clone https://github.com/Parambrata-Das/Student-Mark-Manager-repo.git
    ```
 2. Navigate into the project folder.
-3. Put the `Terminal C file` files to a single folder.
+3. Put the `Terminal C file` to a single folder.
 4. Then run the folder in `VS code` or any other compailars.
 
 ## 🎮 Usage Guide
