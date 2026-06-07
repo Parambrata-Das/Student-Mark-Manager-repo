@@ -29,6 +29,9 @@ struct student
     char Name[100];
     float marks[100];
     float total;
+    int total_marks;
+	char grade[100];
+	char remarks[100];
 };
 ```
 
@@ -63,7 +66,7 @@ Roll       Name                 Total
 
 ## 🏃‍➡️ Updates
 * Insert bug fixed.
-* `Grade` & `Remarks` added.
+* `Grade`, `Total(F)` & `Remarks` added.
 
 ## 🤝 Contributing
 
