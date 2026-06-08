@@ -1,4 +1,4 @@
-# Student Record System (C Language) - v.0.0.3
+# Student Record System (C Language) - v.0.0.4
 
 A lightweight, console-based Student Record System written in C. This program allows users to insert student information, record marks across multiple subjects, automatically calculate individual total scores, and display the formatted outputs in a clean report card layout.
 
@@ -8,6 +8,7 @@ A lightweight, console-based Student Record System written in C. This program al
 *   **Dynamic Data Insertion:** Prompts for the number of students and subjects sequentially during runtime execution.
 *   **Automatic Aggregation:** Computes the total score dynamically as subject marks are typed in.
 *   **Tabular Alignment:** Displays a formatted table utilizing left-aligned boundaries for high readability.
+*   **Easy Search:** Easily search any student by `Name` or `Roll number`.
 
 ---
 
@@ -18,7 +19,7 @@ A lightweight, console-based Student Record System written in C. This program al
 
 ---
 
-## 💻 Structure Definition
+## 🚦 Structure Definition
 
 The core database uses a custom `struct` to group relevant student attributes:
 
@@ -67,6 +68,8 @@ Roll       Name                 Total
 ## 🏃‍➡️ Updates
 * Insert bug fixed.
 * `Grade`, `Total(F)` & `Remarks` added.
+* New `Search` feature added.
+**More updates coming soon** 
 
 ## 🤝 Contributing
 
