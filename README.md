@@ -70,7 +70,7 @@ Roll       Name                      Total(G)   Total(F)   Grade      Remarks
 * Insert bug fixed.
 * `Grade`, `Total(F)` & `Remarks` added.
 * New `Search` feature added.
-**More updates coming soon** 
+* **More updates coming soon** 
 
 ## 🤝 Contributing
 
