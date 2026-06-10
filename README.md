@@ -66,12 +66,6 @@ Roll       Name                      Total(G)   Total(F)   Grade      Remarks
 
 ---
 
-## 🏃‍➡️ Updates
-* Insert bug fixed.
-* `Grade`, `Total(F)` & `Remarks` added.
-* New `Search` feature added.
-* **More updates coming soon** 
-
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to fork this project to expand features like file management persistence, data searching, or ascending roll sorting mechanisms.
