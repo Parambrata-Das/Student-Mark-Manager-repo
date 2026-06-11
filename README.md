@@ -53,8 +53,10 @@ struct student
 When you launch the application, you will interact with an infinite loop menu system:
 1. **Insert**: Setup database entry by typing total student counts, subject constraints, and filling individual student details (Name, Roll No, and Marks). 
 2. **Display**: Outputs a neatly structured table showing the **Roll**, **Name**, **Total(G)**, **Total(F)**, **Grade** & **Remarks** aggregated columns.
-3. **Exit**: Gracefully closes the running terminal process.
-4. `Total(G)` is the number student gained & `Total(F)` is the Full marks.
+3. **Search**: Easily search any student by their `Name` & `Roll Number`.
+4. **Delete**: Delete any student by their `Roll Number`.
+5. **Exit**: Gracefully closes the running terminal process.
+6. `Total(G)` is the number student gained & `Total(F)` is the Full marks.
 
 ### Code Sample Output
 ```text
