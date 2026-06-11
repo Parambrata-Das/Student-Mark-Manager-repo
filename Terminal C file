@@ -29,6 +29,7 @@ int enty_data(struct student s[], int *n,int *m)
 	    printf("Enter the number of subjects: ");
 	    scanf("%d", m);
     }
+    printf("\n------Enter student record------\n");
     int limit=*n+new_students;
 	for(i=*n;i<limit;i++)
 	{
@@ -176,6 +177,41 @@ int search_student(struct student s[], int n)
 		printf("\nNo data found!!!\n");
 	}
 }
+int delete_data(struct student s[], int *n)
+{
+	if(n==0)
+	{
+		printf("Database is empty!!!");
+		return 0;
+	}
+	int i,j,search_roll,found=0;
+	printf("\n------Delete student record------\n ");
+	printf("Enter the roll number: ");
+	scanf("%d",&search_roll);
+	for(i=0;i<*n;i++)
+	{
+		if(s[i].roll==search_roll)
+		{
+			found=1;
+			for(j=i;j<*n-1;j++)
+			{
+				s[j]=s[j+1];
+			}
+			(*n)--;
+			i--;
+		}
+	}
+	 if(found)
+    {
+        printf("\n======Record Deleted Successfully======\n");
+    }
+    else
+    {
+        printf("\nStudent with Roll No %d not found!\n", search_roll);
+    }
+    return 0;
+	
+}
 int main()
 {
 	struct student s[100];
@@ -183,7 +219,7 @@ int main()
 	int subject_count=0;
 	int ch;
     do {
-        printf("\n1.Insert \n2.Display \n3.Search\n4.Exit \n");
+        printf("\n1.Insert \n2.Display \n3.Search \n4.Delete \n5.Exit \n");
         printf("Enter your choice: ");
         scanf("%d",&ch);
         switch(ch) {
@@ -202,8 +238,11 @@ int main()
             break;
         case 3:
 		    search_student(s,student_count); 
-			break;   
-        case 4:
+			break;
+		case 4:
+		    delete_data(s,&student_count);
+		    break;
+        case 5:
             exit(0);
             break;
         default:
