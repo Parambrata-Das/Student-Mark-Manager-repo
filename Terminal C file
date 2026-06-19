@@ -3,13 +3,14 @@
 #include <string.h>
 struct student 
 {
-    int roll;
+    long long roll;
 	char Name[100];
-	float marks[100];
+	float marks[10];
 	float total;
 	int total_marks;
-	char grade[100];
-	char remarks[100];
+	char grade[10];
+	char remarks[10];
+	char merit[50];
 };
 int enty_data(struct student s[], int *n,int *m)
 {
@@ -48,62 +49,73 @@ int enty_data(struct student s[], int *n,int *m)
 		float diff = s[i].total_marks - s[i].total;
 		if(diff<=10)
     	{
-	    	strcpy(s[i].grade,"AA+");
+	    	strcpy(s[i].grade,"O");
 	    	strcpy(s[i].remarks,"PASS");
+	    	strcpy(s[i].merit, "Excellent");
 	    }
 	    else if(diff<=20 && diff>10)
  	    {
-	    	strcpy(s[i].grade,"AA");
+	    	strcpy(s[i].grade,"AA+");
 	    	strcpy(s[i].remarks,"PASS");
+	    	strcpy(s[i].merit, "Extra-ordinary");
 	    }
 	    else if(diff<=50 && diff>20)
     	{
-	    	strcpy(s[i].grade,"A+");
+	    	strcpy(s[i].grade,"AA");
 	    	strcpy(s[i].remarks,"PASS");
+	    	strcpy(s[i].merit, "Very Good");
     	}
 	    else if(diff<=100 && diff>50)
 	    {
-	    	strcpy(s[i].grade,"A");
+	    	strcpy(s[i].grade,"A+");
 	    	strcpy(s[i].remarks,"PASS");
+	    	strcpy(s[i].merit, "Good");
 		}
 		 else if(diff<=150 && diff>100)
 	    {
-	    	strcpy(s[i].grade,"B+");
+	    	strcpy(s[i].grade,"A");
 	        strcpy(s[i].remarks,"PASS");
+	        strcpy(s[i].merit, "Ordinary");
 		} 
 		else if(diff<=200 && diff>150)
 	    {
-	    	strcpy(s[i].grade,"B");
+	    	strcpy(s[i].grade,"B+");
 	    	strcpy(s[i].remarks,"PASS");
+	    	strcpy(s[i].merit, "Avarage");
 		} 
 		else if(diff<=250 && diff>200)
 	    {
-	    	strcpy(s[i].grade,"C");
+	    	strcpy(s[i].grade,"B");
 	    	strcpy(s[i].remarks,"PASS");
+	    	strcpy(s[i].merit, "Below Avarage");
 		} 
 		else if(diff<=300 && diff>250)
 	    {
+	    	strcpy(s[i].grade,"C");
+	    	strcpy(s[i].remarks,"PASS");
+	    	strcpy(s[i].merit, "Satisfactory");
+		} 
+		else if(diff<=362 && diff>300)
+	    {
 	    	strcpy(s[i].grade,"C+");
 	    	strcpy(s[i].remarks,"PASS");
-		} 
-		else if(diff<=350 && diff>300)
+	    	strcpy(s[i].merit, "Non-Satisfactory");
+		}
+		else if(diff>362)
 	    {
 	    	strcpy(s[i].grade,"F");
 	    	strcpy(s[i].remarks,"FAIL");
-		}
-		else if(diff>350)
-	    {
-	    	strcpy(s[i].grade,"F+");
-	    	strcpy(s[i].remarks,"FAIL");
+	    	strcpy(s[i].merit, "NONE");
 		}
 	}
 	*n=limit;
-	printf("\n======Data Entered Succeesfully======\n");
+	printf("\n======Data Entered Succeesfully======\n\n");
 	return 0;
 }
 int display_data(struct student s[], int n)
 {
-	int i;
+	int i,j;
+	struct student temp;
 	printf("\n------Student Report Card------\n");
 	if(n==0)
 	{
@@ -111,10 +123,22 @@ int display_data(struct student s[], int n)
 	}
 	else
 	{
-    	printf("%-10s %-25s %-10s %-10s %-10s %-10s\n", "Roll", "Name", "Total(G)", "Total(F)", "Grade", "Remarks");
+		for(i=0;i<n-1;i++)
+		{
+			for(j=0;i<n-i-1;i++)
+			{
+				if(s[j].roll>s[j+1].roll)
+				{
+			    	temp=s[j];
+				    s[j]=s[j+1];
+			    	s[j+1]=temp;
+			    }
+			}
+		}
+    	printf("%-10s %-25s %-10s %-10s %-10s %-10s %-20s\n", "Roll", "Name", "Total(G)", "Total(F)", "Grade", "Remarks", "Merit");
         for(i = 0; i < n; i++)
         {
-            printf("%-10d %-25s %-10.2f %-10d %-10s %-10s\n", s[i].roll, s[i].Name, s[i].total, s[i].total_marks, s[i].grade, s[i].remarks);
+            printf("%-10d %-25s %-10.2f %-10d %-10s %-10s %-20s\n", s[i].roll, s[i].Name, s[i].total, s[i].total_marks, s[i].grade, s[i].remarks, s[i].merit);
         }
     }
 	return 0;
@@ -127,7 +151,7 @@ int search_student(struct student s[], int n)
 		return 0;
 	}
 	int i,choice,found=0;
-	int search_roll;
+	long long search_roll;
 	char search_name[100];
 	printf("\n------Student Search------\n");
 	printf("1. Search by roll number\n");
@@ -137,7 +161,7 @@ int search_student(struct student s[], int n)
 	if(choice==1)
 	{
 		printf("Enter the roll number: ");
-		scanf("%d",&search_roll);
+		scanf("%lld",&search_roll);
 		for(i=0;i<n;i++)
 		{
 	    	if(s[i].roll==search_roll)
@@ -163,31 +187,32 @@ int search_student(struct student s[], int n)
 		    	{
 		    		printf("\n%-10s %-25s %-10s %-10s %-10s %-10s\n", "Roll", "Name", "Total(G)", "Total(F)", "Grade", "Remarks");
 		    	}
-		    	printf("%-10d %-25s %-10.2f %-10d %-10s %-10s\n", s[i].roll, s[i].Name, s[i].total, s[i].total_marks, s[i].grade, s[i].remarks);
+		    	printf("%-10d %-25s %-10.2f %-10d %-10s %-10s\n\n", s[i].roll, s[i].Name, s[i].total, s[i].total_marks, s[i].grade, s[i].remarks);
 		    	found++;
 	        }
     	}
     }
 	else
 	{
-		printf("\nInvalid choice!!!!\n");
+		printf("\nInvalid choice!!!!\n\n");
 	}
 	if(found==0)
 	{
-		printf("\nNo data found!!!\n");
+		printf("\nNo data found!!!\n\n");
 	}
 }
 int delete_data(struct student s[], int *n)
 {
-	if(n==0)
+	if(*n==0)
 	{
-		printf("Database is empty!!!");
+		printf("\n\nDatabase is empty!!!\n\n");
 		return 0;
 	}
-	int i,j,search_roll,found=0;
+	int i,j,found=0;
+	long long search_roll;
 	printf("\n------Delete student record------\n ");
 	printf("Enter the roll number: ");
-	scanf("%d",&search_roll);
+	scanf("%lld",&search_roll);
 	for(i=0;i<*n;i++)
 	{
 		if(s[i].roll==search_roll)
@@ -203,14 +228,158 @@ int delete_data(struct student s[], int *n)
 	}
 	 if(found)
     {
-        printf("\n======Record Deleted Successfully======\n");
+        printf("\n======Record Deleted Successfully======\n\n");
     }
     else
     {
         printf("\nStudent with Roll No %d not found!\n", search_roll);
     }
     return 0;
+}
+int update_data(struct student s[], int n,int m)
+{
+	long long search_roll;
+	int i,j,found=0,update_choice,target;
+	if(n==0)
+	{
+		printf("\nDatabase is empty!!!\n");
+		return 0;
+	}
+	printf("\n------Update student record------\n");
+	printf("Enter the roll number to update: ");
+	scanf("%lld", &search_roll);
 	
+	for(i=0;i<n;i++)
+	{
+		if(s[i].roll==search_roll)
+		{
+			found=1;
+			printf("\nRecord found for the student!\n\n");
+			printf("\n%-10s %-25s %-10s %-10s %-10s %-10s\n", "Roll", "Name", "Total(G)", "Total(F)", "Grade", "Remarks");
+			printf("%-10d %-25s %-10.2f %-10d %-10s %-10s\n", s[i].roll, s[i].Name, s[i].total, s[i].total_marks, s[i].grade, s[i].remarks);
+			printf("What do you want to upgrade?\n");
+			printf("1. Update Student Name\n");
+			printf("2. Update  Student Roll Number\n");
+			printf("3. Update Specific Subject Marks\n");
+			printf("4. Update All Subject Marks\n");
+			printf("\nEnter choice: ");
+			scanf("%d", &update_choice);
+			
+			switch(update_choice)
+			{
+				case 1:
+					printf("Enter new name: ");
+					scanf(" %[^\n]",s[i].Name);
+					break;
+				case 2:
+					printf("Enter new Roll no.: ");
+					scanf("%d",&s[i].roll);
+					break;
+				case 3:
+					printf("Enter subject index to upgrade: ",m);
+					scanf("%d", &target);
+					if(target>=1 && target<=m)
+					{
+						printf("Enter new marks of the Subject: ",target);
+						scanf("%f",&s[i].marks[target-1]);
+						s[i].total=0;
+						for(j=0;j<m;j++)
+						{
+							s[i].total+=s[i].marks[j];
+						}
+					}
+					else
+					{
+						printf("Invalid choice! Skipping upgrades.\n");
+						return 0;
+					}
+					break;
+				case 4: 
+				    s[i].total=0;
+				    for(j=0;j<n;j++)
+				    {
+				    	printf("Enter the new marks of Subjacts: ");
+				    	scanf("%f",&s[i].marks[j]);
+				    	s[i].total+=s[i].marks[j];
+					}
+					break;
+				default:
+				    printf("Invalid Choice!!!no update made.\n");	
+		    }
+		    if(update_choice==3 || update_choice==4)
+		    {
+		    	float diff=s[i].total_marks-s[i].total;
+		    	if(diff<=10)
+    	        {
+	            	strcpy(s[i].grade,"O");
+	            	strcpy(s[i].remarks,"PASS");
+	    	        strcpy(s[i].merit, "Excellent");
+	            }
+	            else if(diff<=20 && diff>10)
+ 	            {
+	            	strcpy(s[i].grade,"AA+");
+	             	strcpy(s[i].remarks,"PASS");
+	            	strcpy(s[i].merit, "Extra-ordinary");
+	            }
+	            else if(diff<=50 && diff>20)
+    	        {
+	             	strcpy(s[i].grade,"AA");
+	             	strcpy(s[i].remarks,"PASS");
+	    	        strcpy(s[i].merit, "Very Good");
+            	}
+        	    else if(diff<=100 && diff>50)
+	            {
+	            	strcpy(s[i].grade,"A+");
+	            	strcpy(s[i].remarks,"PASS");
+	            	strcpy(s[i].merit, "Good");
+        		}
+	       	    else if(diff<=150 && diff>100)
+	            {
+	            	strcpy(s[i].grade,"A");
+	                strcpy(s[i].remarks,"PASS");
+	                strcpy(s[i].merit, "Ordinary");
+	        	} 
+	        	else if(diff<=200 && diff>150)
+	            {
+	            	strcpy(s[i].grade,"B+");
+	            	strcpy(s[i].remarks,"PASS");
+	            	strcpy(s[i].merit, "Avarage");
+        		} 
+	        	else if(diff<=250 && diff>200)
+	            {
+	            	strcpy(s[i].grade,"B");
+	            	strcpy(s[i].remarks,"PASS");
+	            	strcpy(s[i].merit, "Below Avarage");
+		        } 
+		        else if(diff<=300 && diff>250)
+	            {
+	            	strcpy(s[i].grade,"C");
+	            	strcpy(s[i].remarks,"PASS");
+	            	strcpy(s[i].merit, "Satisfactory");
+	        	} 
+		        else if(diff<=362 && diff>300)
+	            {
+	            	strcpy(s[i].grade,"C+");
+	            	strcpy(s[i].remarks,"PASS");
+	              	strcpy(s[i].merit, "Non-Satisfactory");
+	        	}
+		        else if(diff>362)
+	            {
+	              	strcpy(s[i].grade,"F");
+	            	strcpy(s[i].remarks,"FAIL");
+	            	strcpy(s[i].merit, "NONE");
+	        	}
+			}
+			printf("\n======Record Updated Successfully======\n\n");
+			break; 
+		}
+	}
+	if(found==0)
+	{
+		printf("Invalid input!!! no record found");
+		return 0;
+	}
+	return 0;
 }
 int main()
 {
@@ -219,7 +388,8 @@ int main()
 	int subject_count=0;
 	int ch;
     do {
-        printf("\n1.Insert \n2.Display \n3.Search \n4.Delete \n5.Exit \n");
+    	printf("\n======Select the Option======\n");
+        printf("\n1.Insert \n2.Display \n3.Search \n4.Delete \n5.Update \n6.Exit \n\n");
         printf("Enter your choice: ");
         scanf("%d",&ch);
         switch(ch) {
@@ -242,7 +412,10 @@ int main()
 		case 4:
 		    delete_data(s,&student_count);
 		    break;
-        case 5:
+		case 5:
+		    update_data(s,student_count,subject_count); 
+		    break;
+        case 6:
             exit(0);
             break;
         default:
