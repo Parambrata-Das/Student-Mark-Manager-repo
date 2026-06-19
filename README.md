@@ -9,6 +9,7 @@ A lightweight, console-based Student Record System written in C. This program al
 *   **Automatic Aggregation:** Computes the total score dynamically as subject marks are typed in.
 *   **Tabular Alignment:** Displays a formatted table utilizing left-aligned boundaries for high readability.
 *   **Easy Search:** Easily search any student by `Name` or `Roll number`.
+*   **Anytime Update:** Update any details any time.
 
 ---
 
