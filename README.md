@@ -6,7 +6,7 @@ A lightweight, console-based Student Record System written in C. This program al
 
 *   **Custom Struct Architecture:** Organizes variables (Roll, Name, Subject Marks Array, and Total) neatly inside a dedicated structure array.
 *   **Dynamic Data Insertion:** Prompts for the number of students and subjects sequentially during runtime execution.
-*   **Automatic Aggregation:** Computes the total score dynamically as subject marks are typed in.
+*   **Automatic Aggregation:** Computes the total score, grade, remarks and merit dynamically as subject marks are typed in.
 *   **Tabular Alignment:** Displays a formatted table utilizing left-aligned boundaries for high readability.
 *   **Easy Search:** Easily search any student by `Name` or `Roll number`.
 *   **Anytime Update:** Easily update any details any time.
@@ -27,13 +27,14 @@ The core database uses a custom `struct` to group relevant student attributes:
 ```c
 struct student 
 {
-    int roll;
-    char Name[100];
-    float marks[100];
-    float total;
-    int total_marks;
-	char grade[100];
-	char remarks[100];
+    long long roll;
+	char Name[100];
+	float marks[10];
+	float total;
+	int total_marks;
+	char grade[10];
+	char remarks[10];
+	char merit[50];
 };
 ```
 
@@ -53,7 +54,7 @@ struct student
 
 When you launch the application, you will interact with an infinite loop menu system:
 1. **Insert**: Setup database entry by typing total student counts, subject constraints, and filling individual student details (Name, Roll No, and Marks). 
-2. **Display**: Outputs a neatly structured table showing the **Roll**, **Name**, **Total(G)**, **Total(F)**, **Grade** & **Remarks** aggregated columns.
+2. **Display**: Outputs a neatly structured table showing the **Roll**, **Name**, **Total(G)**, **Total(F)**, **Grade**, **Remarks** & **Merit** aggregated columns.
 3. **Search**: Easily search any student by entering their `Name` or `Roll Number`.
 4. **Update**: Update any specific details like `Roll number`, `Name`, `Subject Marks` or all the details easily.
 5. **Delete**: Delete any student by entering their `Roll Number`.
@@ -62,10 +63,11 @@ When you launch the application, you will interact with an infinite loop menu sy
 
 ### Code Sample Output
 ```text
+
 ------Student Report Card------
-Roll       Name                      Total(G)   Total(F)   Grade      Remarks
-101        Alex Mercer               285.00     300        AA+         PASS
-102        Sarah Connor              294.00     300        O        PASS 
+Roll       Name                      Total(G)   Total(F)   Grade      Remarks    Merit
+101        Alex Mercer               285.00     300        AA+        PASS       Extra-ordinary
+102        Sarah Connor              294.00     300        O          PASS       Excellent
 ```
 
 ---
