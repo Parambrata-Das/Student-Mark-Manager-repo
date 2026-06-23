@@ -1,4 +1,4 @@
-# Student Record System (C Language) - v.0.0.5
+# Student Record System (C Language) - v.0.0.6
 
 A lightweight, console-based Student Record System written in C. This program allows users to insert student information, record marks across multiple subjects, automatically calculate individual total scores, and display the formatted outputs in a clean report card layout.
 
