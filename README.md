@@ -9,7 +9,7 @@ A lightweight, console-based Student Record System written in C. This program al
 *   **Automatic Aggregation:** Computes the total score dynamically as subject marks are typed in.
 *   **Tabular Alignment:** Displays a formatted table utilizing left-aligned boundaries for high readability.
 *   **Easy Search:** Easily search any student by `Name` or `Roll number`.
-*   **Anytime Update:** Update any details any time.
+*   **Anytime Update:** Easily update any details any time.
 
 ---
 
@@ -54,17 +54,18 @@ struct student
 When you launch the application, you will interact with an infinite loop menu system:
 1. **Insert**: Setup database entry by typing total student counts, subject constraints, and filling individual student details (Name, Roll No, and Marks). 
 2. **Display**: Outputs a neatly structured table showing the **Roll**, **Name**, **Total(G)**, **Total(F)**, **Grade** & **Remarks** aggregated columns.
-3. **Search**: Easily search any student by their `Name` & `Roll Number`.
-4. **Delete**: Delete any student by their `Roll Number`.
-5. **Exit**: Gracefully closes the running terminal process.
-6. `Total(G)` is the number student gained & `Total(F)` is the Full marks.
+3. **Search**: Easily search any student by entering their `Name` or `Roll Number`.
+4. **Update**: Update any specific details like `Roll number`, `Name`, `Subject Marks` or all the details easily.
+5. **Delete**: Delete any student by entering their `Roll Number`.
+6. **Exit**: Gracefully closes the running terminal process.
+7. `Total(G)` is the number student gained & `Total(F)` is the Full marks.
 
 ### Code Sample Output
 ```text
 ------Student Report Card------
 Roll       Name                      Total(G)   Total(F)   Grade      Remarks
-101        Alex Mercer               285.00     300        AA         PASS
-102        Sarah Connor              294.00     300        AA+        PASS 
+101        Alex Mercer               285.00     300        AA+         PASS
+102        Sarah Connor              294.00     300        O        PASS 
 ```
 
 ---
